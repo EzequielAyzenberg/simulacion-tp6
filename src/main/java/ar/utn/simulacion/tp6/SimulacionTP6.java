@@ -20,6 +20,9 @@ public class SimulacionTP6 {
 	private int PC;
 	private Random rnd = new Random();
 	private int HV = Integer.MAX_VALUE;
+	private int CTP;
+	private int PPECG;
+	private int PPESG;
 
 	public SimulacionTP6(int P, int D) {
 		this.P = P;
@@ -33,6 +36,7 @@ public class SimulacionTP6 {
 				IA();
 				TPLL = T + IA;
 				CP();
+				CTP += CP; 
 				if (TPCD < TPFD) {
 					EVADEN_CON_GUARDIA();
 				} else {
@@ -51,8 +55,12 @@ public class SimulacionTP6 {
 				}
 			}
 		}
+		
+		PPECG = (CPECG * 100) / CTP;
+		PPESG = (CPESG * 100) / CTP;
+		
 		System.out.println("D = "+D+", P = "+P+": "
-				+"CPECG = "+CPECG+", CPESG: "+CPESG+""
+				+"PPECG = "+PPECG+", PPESG: "+PPESG+""
 						+ ", CDP: "+CDP);
 	}
 
